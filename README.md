@@ -26,9 +26,9 @@ In this example, `zs` is the depth of source, `delta` is the horizontal distance
 
 As a result, `tdw` is the travel time of direct wave, and `trw` is the travel time of reflected wave. Besides, the paths of direct wave and reflected wave are showed as follow:
 
-![Path of direct wave](https://github.com/TcheL/RT1D/blob/masterfig/DW1DRT.png)
+![Path of direct wave](https://github.com/TcheL/RT1D/blob/master/fig/DW1DRT.png)
 
-![Path of reflected wave](https://github.com/TcheL/RT1D/blob/masterfig/RW1DRT.png)
+![Path of reflected wave](https://github.com/TcheL/RT1D/blob/master/fig/RW1DRT.png)
 
 ## Reference
 
