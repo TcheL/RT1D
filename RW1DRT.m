@@ -28,13 +28,17 @@ h = diff(dep);                                                                  
 nlyr = length(vel);
 
 if(zs > dep(end))
-    error('MyArgumentInvalidError:zs', ...
-        'The #1 argument $zs$ is invalid because the source should be above the last layer.');
+    error('The #1 argument $zs$ is invalid because the source must be above the last layer.');
 end
 slyr = max(1,find(zs <= dep,1,'first') - 1);
 if(rlyr < slyr)
-    error('MyArgumentInvalidError:rlyr', ...
-        'The #3 argument $rlyr$ is invalid because the reflected layer must be below source point.');
+    error('The #3 argument $rlyr$ is invalid because the reflected layer must be below source point.');
+end
+if(any(vel < 0))
+    error('The #4 argument $vel$ is illegal because all layer velocity must be positive.');
+end
+if(any(h < 0))
+    error('The #5 argument $dep$ is illegal because all layer thicknesses must be positive.');
 end
 
 hev(1:slyr - 1) = h(1:slyr - 1);
@@ -65,7 +69,7 @@ while(abs(fq/delta) > eps && its <= itsmax)
     fq = q*sum(ek.*hev./sqrt(hmax^2 + (1 - ek.^2).*q^2)) - delta;
 end
 if(its > itsmax)
-    warning('WARNING:MyMaxIteratingTimes',['The iterating time of Newton method is beyond the maximum time of iterations and', ...
+    warning(['The iterating time of Newton method is beyond the maximum time of iterations and', ...
         ' the iterating procedure may be divergent, so the result may be not right!']);
 end
 p = q/(vmax*sqrt(hmax^2 + q^2));

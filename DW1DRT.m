@@ -30,6 +30,12 @@ if(zs > dep(end))
     error('MyArgumentInvalidError:zs', ...
         'The #1 argument $zs$ is invalid because the source should be above the last layer.');
 end
+if(any(vel < 0))
+    error('The #4 argument $vel$ is illegal because all layer velocity must be positive.');
+end
+if(any(h < 0))
+    error('The #5 argument $dep$ is illegal because all layer thicknesses must be positive.');
+end
 slyr = max(1,find(zs <= dep,1,'first') - 1);
 
 hev(1:slyr - 1) = h(1:slyr - 1);
